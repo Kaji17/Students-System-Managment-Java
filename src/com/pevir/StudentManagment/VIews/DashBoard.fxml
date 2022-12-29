@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <AnchorPane prefHeight="39.0" prefWidth="600.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="39.0" prefWidth="1100.0">
+               <children>
+                  <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Resources/Images/icons8-graduation-cap-50-Black.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="10.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextFlow prefHeight="49.0" prefWidth="248.0" textAlignment="CENTER">
+                     <children>
+                        <Label prefHeight="53.0" prefWidth="249.0" text="Student Managment System" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </TextFlow>
+                  <TextFlow prefHeight="53.0" prefWidth="803.0" textAlignment="RIGHT">
+                     <children>
+                        <Button mnemonicParsing="false" styleClass="btn-reduce" stylesheets="@../Resources/Styles/LoginStyle.css" textAlignment="CENTER" translateX="-10.0" translateY="11.0">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/Images/icons8-horizontal-line-24.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" styleClass="btn-close" stylesheets="@../Resources/Styles/LoginStyle.css" textAlignment="CENTER" translateX="-6.0" translateY="12.0">
+                           <graphic>
+                              <ImageView fitHeight="17.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/Images/icons8-close-90-Black.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextFlow>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefHeight="547.0" prefWidth="222.0" style="-fx-background-color: #1C2431;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="-2.0" prefHeight="568.0" prefWidth="224.0">
+               <children>
+                  <TextFlow prefHeight="144.0" prefWidth="201.0" textAlignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="128.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Resources/Images/icons8-user-90.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets top="18.0" />
+                     </padding>
+                  </TextFlow>
+                  <TextFlow prefHeight="67.0" prefWidth="224.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="224.0" text="Welcome," textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="223.0" text="admin" textFill="WHITE">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </TextFlow>
+                  <AnchorPane prefHeight="16.0" prefWidth="224.0">
+                     <children>
+                        <Line endX="206.0" endY="10.0" layoutX="-1.0" layoutY="1.0" startX="20.5" startY="10.0" stroke="WHITE" strokeWidth="2.0" />
+                     </children>
+                  </AnchorPane>
+                  <TextFlow lineSpacing="7.0" prefHeight="216.0" prefWidth="224.0" textAlignment="CENTER">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="201.0" styleClass="btn-menu" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="HOME">
+                           <graphic>
+                              <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/Images/icons8-home-page-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <Blend />
+                           </effect>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="201.0" styleClass="btn-menu" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="ADD STUDENT">
+                           <graphic>
+                              <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/Images/icons8-add-new-100.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="201.0" styleClass="btn-menu" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="AVAILABLE COURSES">
+                           <graphic>
+                              <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/Images/icons8-repository-100.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="201.0" styleClass="btn-menu" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="GRADES OF STUDENTS">
+                           <graphic>
+                              <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/Images/icons8-grade-48.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                  </TextFlow>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" layoutX="44.0" layoutY="81.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="136.0" style="-fx-background-color: transparant;" text="SIGN OUT" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/Images/icons8-sign-out-32.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="539.0" prefWidth="834.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="50.0" layoutY="50.0" prefHeight="567.0" prefWidth="878.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane layoutX="13.0" layoutY="15.0" prefHeight="538.0" prefWidth="853.0" stylesheets="@../Resources/Styles/DashBoardStyle.css">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="white-bg" />
+                     </styleClass>
+                     <children>
+                        <AnchorPane prefHeight="167.0" prefWidth="863.0" stylesheets="@../Resources/Styles/DashBoardStyle.css">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <HBox layoutX="160.0" layoutY="53.0" prefHeight="167.0" prefWidth="863.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane prefHeight="167.0" prefWidth="287.0">
+                                       <children>
+                                          <AnchorPane layoutX="18.0" layoutY="11.0" prefHeight="145.0" prefWidth="252.0" stylesheets="@../Resources/Styles/DashBoardStyle.css">
+                                             <styleClass>
+                                                <String fx:value="blue-bg-top" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                             <children>
+                                                <HBox prefHeight="145.0" prefWidth="252.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="145.0" prefWidth="82.0">
+                                                         <children>
+                                                            <ImageView fitHeight="71.0" fitWidth="63.0" layoutX="5.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../Resources/Images/icons8-user-groups-50.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="145.0" prefWidth="150.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" layoutY="103.0" prefHeight="28.0" prefWidth="141.0" text="Total Stundents Enrolled" textAlignment="CENTER" textFill="WHITE" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="145.0" prefWidth="31.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" layoutX="2.0" layoutY="22.0" prefHeight="17.0" prefWidth="25.0" text="6" textAlignment="CENTER" textFill="WHITE" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="167.0" prefWidth="287.0">
+                                       <children>
+                                          <AnchorPane layoutX="18.0" layoutY="11.0" prefHeight="145.0" prefWidth="252.0" stylesheets="@../Resources/Styles/DashBoardStyle.css">
+                                             <styleClass>
+                                                <String fx:value="blue-bg-top" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                             <children>
+                                                <HBox prefHeight="145.0" prefWidth="252.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="145.0" prefWidth="82.0">
+                                                         <children>
+                                                            <ImageView fitHeight="71.0" fitWidth="63.0" layoutX="5.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../Resources/Images/icons8-standing-man-50.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="145.0" prefWidth="150.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" layoutY="103.0" prefHeight="28.0" prefWidth="141.0" text="Enrolled Mal Stundents" textAlignment="CENTER" textFill="WHITE" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="145.0" prefWidth="31.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" layoutX="2.0" layoutY="22.0" prefHeight="17.0" prefWidth="25.0" text="3" textAlignment="CENTER" textFill="WHITE" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="297.0" layoutY="10.0" prefHeight="167.0" prefWidth="287.0">
+                                       <children>
+                                          <AnchorPane layoutX="18.0" layoutY="11.0" prefHeight="145.0" prefWidth="252.0" stylesheets="@../Resources/Styles/DashBoardStyle.css">
+                                             <styleClass>
+                                                <String fx:value="blue-bg-top" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                             <children>
+                                                <HBox prefHeight="145.0" prefWidth="252.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="145.0" prefWidth="82.0">
+                                                         <children>
+                                                            <ImageView fitHeight="71.0" fitWidth="63.0" layoutX="5.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../Resources/Images/icons8-woman-50.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="145.0" prefWidth="150.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" layoutY="103.0" prefHeight="28.0" prefWidth="141.0" text="Enrolled Female Stundents" textAlignment="CENTER" textFill="WHITE" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane prefHeight="145.0" prefWidth="31.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" layoutX="2.0" layoutY="22.0" prefHeight="17.0" prefWidth="25.0" text="3" textAlignment="CENTER" textFill="WHITE" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="14.0" layoutY="190.0" prefHeight="334.0" prefWidth="412.0" stylesheets="@../Resources/Styles/DashBoardStyle.css">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <BarChart layoutX="-38.0" layoutY="-42.0" prefHeight="358.0" prefWidth="462.0" title="Total Enrolled Chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </BarChart>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="454.0" layoutY="190.0" prefHeight="158.0" prefWidth="396.0" stylesheets="@../Resources/Styles/DashBoardStyle.css">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <AreaChart layoutX="-68.0" layoutY="-137.0" prefHeight="263.0" prefWidth="432.0" title="Enrolled Female Chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </AreaChart>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="454.0" layoutY="366.0" prefHeight="158.0" prefWidth="396.0" stylesheets="@../Resources/Styles/DashBoardStyle.css">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <LineChart layoutX="-104.0" layoutY="-155.0" prefHeight="245.0" prefWidth="396.0" title="Enrolled Male Chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </LineChart>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

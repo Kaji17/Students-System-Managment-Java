@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="600.0" style="-fx-background-color: #2b2f36;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pevir.StudentManagment.Controllers.LoginController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <HBox layoutY="-2.0" prefHeight="419.0" prefWidth="601.0">
+               <children>
+                  <AnchorPane prefHeight="400.0" prefWidth="347.0">
+                     <children>
+                        <VBox prefHeight="419.0" prefWidth="347.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="347.0">
+                                 <children>
+                                    <ImageView fitHeight="34.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Resources/Images/icons8-graduation-cap-100.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Label text="Label" />
+                                    <Label prefHeight="39.0" prefWidth="56.0" text="SMS" textAlignment="CENTER" textFill="#f5f3f3" />
+                                 </children>
+                              </HBox>
+                              <TextFlow prefHeight="195.0" prefWidth="347.0" textAlignment="CENTER">
+                                 <children>
+                                    <ImageView fitHeight="172.0" fitWidth="183.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Resources/Images/icons8-graduation-cap-100.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="75.0" />
+                                 </VBox.margin></TextFlow>
+                              <TextFlow prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="58.0" prefWidth="269.0" text="Student Managment System" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="254.0" style="-fx-background-color: #1C2431;">
+                     <children>
+                        <VBox prefHeight="419.0" prefWidth="254.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="254.0" style="-fx-background-color: #24252C40;">
+                                 <children>
+                                    <Button fx:id="btnClose" mnemonicParsing="false" onAction="#btnClose" styleClass="btn-close" stylesheets="@../Resources/Styles/LoginStyle.css">
+                                       <HBox.margin>
+                                          <Insets right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <graphic>
+                                         
+                                       </graphic>
+                                       <graphic>
+                                          <ImageView fitHeight="24.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../Resources/Images/icons8-close-24.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <TextFlow prefHeight="87.0" prefWidth="254.0" textAlignment="CENTER">
+                                 <VBox.margin>
+                                    <Insets top="23.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <ImageView fitHeight="95.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Resources/Images/icons8-user-90.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </TextFlow>
+                              <TextFlow prefHeight="19.0" prefWidth="254.0" textAlignment="CENTER">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="34.0" prefWidth="166.0" text="SIGN IN" textAlignment="CENTER" textFill="#34a39c">
+                                       <font>
+                                          <Font name="Book Antiqua Bold" size="27.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="34.0" top="10.0" />
+                                 </VBox.margin>
+                              </TextFlow>
+                              <TextFlow prefHeight="19.0" prefWidth="254.0" textAlignment="CENTER">
+                                 <children>
+                                    <TextField fx:id="txtUserName" onAction="#loginAdmin" prefHeight="34.0" prefWidth="217.0" promptText="User Name" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="14.0" />
+                                 </VBox.margin>
+                              </TextFlow>
+                              <TextFlow prefHeight="19.0" prefWidth="254.0" textAlignment="CENTER">
+                                 <children>
+                                    <PasswordField fx:id="pswUser" onAction="#loginAdmin" prefHeight="34.0" prefWidth="217.0" promptText="Password" />
+                                 </children>
+                              </TextFlow>
+                              <TextFlow prefHeight="19.0" prefWidth="254.0" textAlignment="CENTER">
+                                 <children>
+                                    <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="33.0" prefWidth="218.0" style="-fx-cursor: hand; -fx-background-color: #34a39c;" text="Login" textFill="WHITE">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

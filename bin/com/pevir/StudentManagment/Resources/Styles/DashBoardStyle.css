@@ -1,0 +1,23 @@
+.btn-menu{
+	-fx-background-color:  transparant;
+	-fx-cursor: hand;
+	-fx-text-fill: white;
+	-fx-font-size: 13;
+	-fx-font-weight: bold
+}
+
+.btn-menu:hover{
+	-fx-background-color: #34a39c
+}
+.shadow{
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 6, 0, 0, 0);
+}
+.white-bg{
+	-fx-background-color: white;
+	-fx-background-radius: 10;
+}
+
+.blue-bg-top{
+	-fx-background-color:  #2b2f36;
+	-fx-background-radius: 10;
+}
