@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.30.jar"/>
 	<classpathentry kind="lib" path="lib/ojdbc14-9.2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/mariadb-java-client-3.0.7.jar"/>
+	<classpathentry kind="lib" path="lib/charm-glisten-4.4.1-javadoc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
