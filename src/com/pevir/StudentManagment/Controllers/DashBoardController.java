@@ -7,12 +7,14 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.pevir.StudentManagment.Dao.Database;
+import com.pevir.StudentManagment.Model.Course;
 import com.pevir.StudentManagment.Model.Student;
 
 import javafx.collections.FXCollections;
@@ -46,7 +48,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class DashBoardController implements Initializable {
+public class DashBoardController implements Initializable, MainController {
 
 	@FXML
 	private AnchorPane addStudent_Form;
@@ -145,16 +147,16 @@ public class DashBoardController implements Initializable {
 	private Button availableCourse_btn_update;
 
 	@FXML
-	private TableColumn<?, ?> availableCourse_col_course;
+	private TableColumn<Course, String> availableCourse_col_course;
 
 	@FXML
-	private TableColumn<?, ?> availableCourse_col_degree;
+	private TableColumn<Course, String> availableCourse_col_degree;
 
 	@FXML
-	private TableColumn<?, ?> availableCourse_col_description;
+	private TableColumn<Course, String> availableCourse_col_description;
 
 	@FXML
-	private TableView<?> availableCourse_tableView;
+	private TableView<Course> availableCourse_tableView;
 
 	@FXML
 	private TextField availableCourse_txt_course;
@@ -274,13 +276,27 @@ public class DashBoardController implements Initializable {
 
 	private String[] StatusList = { "Enrolled", "Unenrolled", "Inactive" };
 
+	private ObservableList<Course> availableList;
+
+	private Statement statement;
+
 	/**
 	 * methode pour fermer la fenetre
 	 * 
 	 * @return void
 	 */
 	public void close() {
-		System.exit(0);
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("CONFIRMATION MESSAGE");
+		alert.setHeaderText(null);
+		alert.setContentText("Are you sure you want to quit !");
+		Optional<ButtonType> option = alert.showAndWait();
+
+		if (option.get().equals(ButtonType.OK)) {
+			System.exit(0);
+		} else
+			return;
+
 	}
 
 	/**
@@ -373,6 +389,7 @@ public class DashBoardController implements Initializable {
 //			Ajouter un couleur transparent au backgroud des trois button passer en parametre
 			removeStyleBtn(home_btn, addStudent_btn, studentGrade_btn);
 
+			availableShowList();
 		} else if (event.getSource() == studentGrade_btn) {
 			studentGrade_Form.setVisible(true);
 			availableCourse_Form.setVisible(false);
@@ -383,7 +400,7 @@ public class DashBoardController implements Initializable {
 			addStyle(studentGrade_btn, "#34a39c");
 
 //			Ajouter un couleur transparent au backgroud des trois button passer en parametre
-			removeStyleBtn(home_btn, addStudent_btn_add, availableCourse_btn);
+			removeStyleBtn(home_btn, addStudent_btn, availableCourse_btn);
 		}
 
 	}
@@ -430,7 +447,7 @@ public class DashBoardController implements Initializable {
 	}
 
 	/**
-	 * méthode qui récupère tout les étudiant de la base de donné et l'ajute à une
+	 * méthode qui récupère tout les étudiant de la base de donné et l'ajoute à une
 	 * liste d'observable
 	 * 
 	 * @return ObservableList<Student>
@@ -465,7 +482,7 @@ public class DashBoardController implements Initializable {
 
 		return listStudents;
 	}
-	
+
 	/**
 	 * méthode permettant d'afficher les champs sur l'objet student elle ajoute au
 	 * diférentes colone les attirubuts correspondant
@@ -506,11 +523,74 @@ public class DashBoardController implements Initializable {
 		addStudent_txt_firstName.setText(student.getFirstName());
 		addStudent_txt_lastname.setText(student.getLastName());
 
-
 		String url = student.getImage();
 
 		Image image = new Image(url, 200, 176, false, true);
 		addStudent_ImageView.setImage(image);
+
+	}
+
+	/**
+	 * méthode qui récupère tous les courses de la base de donné et l'ajoute à une
+	 * liste d'observable
+	 * 
+	 * @return ObservableList<Course>
+	 */
+	public ObservableList<Course> availableCourseList() {
+		ObservableList<Course> listcourse = FXCollections.observableArrayList();
+
+		String sql = "SELECT * FROM Course";
+
+		connect = Database.connectDb();
+
+		try {
+
+			prepare = connect.prepareStatement(sql);
+
+			result = prepare.executeQuery();
+
+			while (result.next()) {
+				Course course;
+
+				course = new Course(result.getString("course"), result.getString("description"),
+						result.getString("degree"));
+
+				listcourse.add(course);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return listcourse;
+	}
+
+	/**
+	 * méthode permettant d'afficher les champs sur l'objet course elle ajoute au
+	 * diférentes colone les attirubuts correspondant
+	 */
+	public void availableShowList() {
+		availableList = availableCourseList();
+
+		availableCourse_col_course.setCellValueFactory(new PropertyValueFactory<>("course"));
+		availableCourse_col_description.setCellValueFactory(new PropertyValueFactory<>("description"));
+		availableCourse_col_degree.setCellValueFactory(new PropertyValueFactory<>("degree"));
+
+		availableCourse_tableView.setItems(availableList);
+	}
+
+	public void availableSelected() {
+		Course course = availableCourse_tableView.getSelectionModel().getSelectedItem();
+
+		Integer num = availableCourse_tableView.getSelectionModel().getSelectedIndex();
+
+		if (num - 1 < -1) {
+			return;
+		}
+		availableCourse_txt_course.setText(course.getCourse());
+		availableCourse_txt_description.setText(course.getDescription());
+		availableCourse_txt_degree.setText(course.getDegree());
 
 	}
 
@@ -574,9 +654,222 @@ public class DashBoardController implements Initializable {
 		addStudent_choiceBox_status.setItems(oblist);
 	}
 
+	/**
+	 * méthode créer pour pouvoir ajouter de nouveau cour à la base de donnée
+	 * 
+	 */
+	public void addAvailableCourse() {
+		Alert alert;
+
+		String sqlInsert = "INSERT INTO Course (course, description, degree) VALUES (?, ?, ?)";
+
+		connect = Database.connectDb();
+
+		try {
+			prepare = connect.prepareStatement(sqlInsert);
+
+//			Vérifier si les champs ne sont pas vides
+			if (availableCourse_txt_course.getText().isEmpty() || availableCourse_txt_description.getText().isEmpty()
+					|| availableCourse_txt_degree.getText().isEmpty()) {
+				alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Message");
+				alert.setHeaderText(null);
+				alert.setContentText("Please fill all blank fields ");
+				alert.showAndWait();
+			} else {
+//				Vérifier si l'élement qu'on veut insérer n'existe pas
+
+				String sqplCheck = "SELECT course FROM course WHERE course = '" + availableCourse_txt_course.getText()
+						+ "'";
+
+				statement = connect.createStatement();
+
+				result = statement.executeQuery(sqplCheck);
+
+				if (result.next()) {
+					alert = new Alert(AlertType.ERROR);
+					alert.setTitle("Error Message");
+					alert.setHeaderText(null);
+					alert.setContentText("Course: " + availableCourse_txt_course.getText() + " was already exist");
+					alert.showAndWait();
+				} else {
+
+					prepare.setString(1, availableCourse_txt_course.getText());
+
+					prepare.setString(2, availableCourse_txt_description.getText());
+
+					prepare.setString(3, availableCourse_txt_degree.getText());
+
+					result = prepare.executeQuery();
+
+					alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("INFORMATION Message");
+					alert.setHeaderText(null);
+					alert.setContentText("Succesfully added!");
+					alert.showAndWait();
+
+					availableShowList();
+					availableCourseClear();
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	/**
+	 * méthode pour rénitialiser tout les champs pour les available course
+	 */
+	public void availableCourseClear() {
+		availableCourse_txt_course.setText("");
+		availableCourse_txt_description.setText("");
+		availableCourse_txt_degree.setText("");
+	}
+
+	/**
+	 * méthode créer pour pouvoir supprimer des cours de la base de donnée
+	 * 
+	 */
+	public void availableCourseDelete() {
+		Alert alert;
+
+		String sqlDelete = "DELETE FROM course WHERE course =?";
+
+		connect = Database.connectDb();
+
+		try {
+
+			if (availableCourse_txt_course.getText().isEmpty()) {
+				alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Message");
+				alert.setHeaderText(null);
+				alert.setContentText("Please fill all blank fields ");
+				alert.showAndWait();
+			} else {
+
+				String sqlCheck = "SELECT course FROM course WHERE course = '" + availableCourse_txt_course.getText()
+						+ "'";
+				statement = connect.createStatement();
+
+				result = statement.executeQuery(sqlCheck);
+
+				if (result.next()) {
+
+					alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("CONFIRMATION Message");
+					alert.setHeaderText(null);
+					alert.setContentText(
+							"Are you sure you want deleted: '" + availableCourse_txt_course.getText() + "'!");
+					Optional<ButtonType> option = alert.showAndWait();
+
+					if (option.get().equals(ButtonType.OK)) {
+
+						prepare = connect.prepareStatement(sqlDelete);
+
+						prepare.setString(1, availableCourse_txt_course.getText());
+
+						result = prepare.executeQuery();
+
+						alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("INFORMATION Message");
+						alert.setHeaderText(null);
+						alert.setContentText("Deleted!");
+						availableCourseClear();
+						availableShowList();
+						alert.showAndWait();
+
+					}
+				} else {
+					alert = new Alert(AlertType.ERROR);
+					alert.setTitle("Error Message");
+					alert.setHeaderText(null);
+					alert.setContentText("Course: " + availableCourse_txt_course.getText() + " not found ");
+					alert.showAndWait();
+					return;
+				}
+
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
+	public void availableCourseUpdate() {
+		Alert alert;
+
+		String sqlUpdate = "UPDATE course SET description=?, degree=? WHERE course=?";
+
+		connect = Database.connectDb();
+
+		try {
+
+			if (availableCourse_txt_course.getText().isEmpty() || availableCourse_txt_description.getText().isEmpty()
+					|| availableCourse_txt_degree.getText().isEmpty()) {
+				alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Message");
+				alert.setHeaderText(null);
+				alert.setContentText("Please fill all blank fields ");
+				alert.showAndWait();
+			} else {
+
+				String sqlCheck = "SELECT course FROM course WHERE course = '" + availableCourse_txt_course.getText()
+						+ "'";
+				statement = connect.createStatement();
+
+				result = statement.executeQuery(sqlCheck);
+
+				if (result.next()) {
+
+					alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("CONFIRMATION Message");
+					alert.setHeaderText(null);
+					alert.setContentText(
+							"Are you sure you want update information of : '" + availableCourse_txt_course.getText() + "'!");
+					Optional<ButtonType> option = alert.showAndWait();
+
+					if (option.get().equals(ButtonType.OK)) {
+
+						prepare = connect.prepareStatement(sqlUpdate);
+
+						prepare.setString(1, availableCourse_txt_description.getText());
+
+						prepare.setString(2, availableCourse_txt_degree.getText());
+						
+						prepare.setString(3, availableCourse_txt_course.getText());
+
+
+						result = prepare.executeQuery();
+
+						alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("INFORMATION Message");
+						alert.setHeaderText(null);
+						alert.setContentText("Update!");
+						availableCourseClear();
+						availableShowList();
+						alert.showAndWait();
+
+					}
+				} else {
+					alert = new Alert(AlertType.ERROR);
+					alert.setTitle("Error Message");
+					alert.setHeaderText(null);
+					alert.setContentText("Course: " + availableCourse_txt_course.getText() + " not found ");
+					alert.showAndWait();
+					return;
+				}
+
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		addStudentShowList();
+		availableShowList();
 		addStudentYearListChoicBox();
 		addStudentCourseListChoicBox();
 		addStudentStatusListChoicBox();

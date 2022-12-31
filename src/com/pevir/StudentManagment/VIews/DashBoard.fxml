@@ -468,7 +468,7 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <ImageView fx:id="addStudent_ImageView" fitHeight="176.0" fitWidth="200.0" layoutX="-32.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="addStudent_ImageView" fitHeight="176.0" fitWidth="200.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
                                     <Button fx:id="addStudent_btn_insert" layoutX="-2.0" layoutY="145.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Insert" textFill="#da2f2f" />
                                  </children>
                               </AnchorPane>
@@ -541,22 +541,22 @@
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="availableCourse_btn_add" layoutX="22.0" layoutY="13.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" styleClass="btn-add" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="ADD" />
+                                    <Button fx:id="availableCourse_btn_add" layoutX="22.0" layoutY="13.0" mnemonicParsing="false" onAction="#addAvailableCourse" prefHeight="35.0" prefWidth="70.0" styleClass="btn-add" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="ADD" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                                  <children>
-                                    <Button fx:id="availableCourse_btn_clear" layoutX="22.0" layoutY="13.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" styleClass="btn-clear" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="CLEAR" />
+                                    <Button fx:id="availableCourse_btn_clear" layoutX="22.0" layoutY="13.0" mnemonicParsing="false" onAction="#availableCourseClear" prefHeight="35.0" prefWidth="70.0" styleClass="btn-clear" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="CLEAR" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                  <children>
-                                    <Button fx:id="availableCourse_btn_update" layoutX="22.0" layoutY="13.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" styleClass="btn-update" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="UPDATE" />
+                                    <Button fx:id="availableCourse_btn_update" layoutX="22.0" layoutY="13.0" mnemonicParsing="false" onAction="#availableCourseUpdate" prefHeight="35.0" prefWidth="70.0" styleClass="btn-update" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="UPDATE" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
-                                    <Button fx:id="availableCourse_btn_delete" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" styleClass="btn-delete" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="DELETE" />
+                                    <Button fx:id="availableCourse_btn_delete" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#availableCourseDelete" prefHeight="35.0" prefWidth="70.0" styleClass="btn-delete" stylesheets="@../Resources/Styles/DashBoardStyle.css" text="DELETE" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -569,7 +569,7 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="availableCourse_tableView" layoutX="13.0" layoutY="15.0" prefHeight="508.0" prefWidth="513.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="15.0">
+                        <TableView fx:id="availableCourse_tableView" layoutX="13.0" layoutY="15.0" onMouseClicked="#availableSelected" prefHeight="508.0" prefWidth="513.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="15.0">
                           <columns>
                             <TableColumn fx:id="availableCourse_col_course" prefWidth="151.0" text="Course" />
                             <TableColumn fx:id="availableCourse_col_description" minWidth="9.0" prefWidth="183.0" text="Description" />
